@@ -84,6 +84,7 @@ return [
 	'Add Icon (English)' => ' اضافة ايقونة بالإنجليزية',
 	'Add Icon (Arabic)' => ' اضافة ايقونة باللعربية',
 	'Add Image (English)' => ' اضافة صورة بالإنجليزية',
+	'Add Image' => ' اضافة صورة   ',
 	'Add Image (Arabic)' => ' اضافة صورة باللعربية',
 	//dashboard page
 	'title_dashboard' => 'Dashboard',

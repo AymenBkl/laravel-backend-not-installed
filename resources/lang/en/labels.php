@@ -480,6 +480,7 @@ return [
 	'ImageDescription' => 'Product image description (Optional).',
 	'ChooseImageText' => 'Please choose an image.',
 	'AddImage' => 'Add Image',
+	'Add Image' => 'Add Image',
 	'Add Image (English)' => 'Add Image (English)',
 	'Add Image (Arabic)' => 'Add Image (Arabic)',
 	'EditImage' => 'Edit Image',
