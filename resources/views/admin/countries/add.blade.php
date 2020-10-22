@@ -3,11 +3,11 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1> {{ trans('labels.AddCountry') }} <small>{{ trans('labels.AddCountry') }}...</small> </h1>
+            <h1> {{ trans('labels.AddRegion') }} <small>{{ trans('labels.AddRegion') }}...</small> </h1>
             <ol class="breadcrumb">
                 <li><a href="{{ URL::to('admin/dashboard/this_month')}}"><i class="fa fa-dashboard"></i> {{ trans('labels.breadcrumb_dashboard') }}</a></li>
-                <li><a href="{{ URL::to('admin/countries/display')}}"><i class="fa fa-money"></i>{{ trans('labels.ListingCountries') }} </a></li>
-                <li class="active">{{ trans('labels.AddCountry') }} </li>
+                <li><a href="{{ URL::to('admin/regions/display')}}"><i class="fa fa-money"></i>{{ trans('labels.ListingRegions') }} </a></li>
+                <li class="active">{{ trans('labels.AddRegion') }} </li>
             </ol>
         </section>
 
@@ -22,7 +22,7 @@
 
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">{{ trans('labels.AddCountry') }}</h3>
+                            <h3 class="box-title">{{ trans('labels.AddRegion') }}</h3>
                         </div>
 
                         <!-- /.box-header -->
@@ -41,14 +41,14 @@
                                         <!-- /.box-header -->
                                         <!-- form start -->
                                         <div class="box-body">
-                                            {!! Form::open(array('url' =>'admin/countries/add', 'method'=>'post', 'class' => 'form-horizontal  form-validate', 'enctype'=>'multipart/form-data')) !!}
+                                            {!! Form::open(array('url' =>'admin/regions/add', 'method'=>'post', 'class' => 'form-horizontal  form-validate', 'enctype'=>'multipart/form-data')) !!}
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.CountryName') }}
+                                                <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.RegionName') }}
                                                 </label>
                                                 <div class="col-sm-10 col-md-4">
                                                     {!! Form::text('countries_name',  '', array('class'=>'form-control  field-validate', 'id'=>'countries_name'))!!}
                                                     <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
-                                                      {{ trans('labels.CountryNameText') }}</span>
+                                                      {{ trans('labels.RegionNameText') }}</span>
                                                     <span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
                                                 </div>
                                             </div>
@@ -78,7 +78,7 @@
                                             <!-- /.box-body -->
                                             <div class="box-footer text-center">
                                                 <button type="submit" class="btn btn-primary">{{ trans('labels.Submit') }}</button>
-                                                <a href="{{ URL::to('admin/countries/display')}}" type="button" class="btn btn-default">{{ trans('labels.back') }}</a>
+                                                <a href="{{ URL::to('admin/regions/display')}}" type="button" class="btn btn-default">{{ trans('labels.back') }}</a>
                                             </div>
                                             <!-- /.box-footer -->
                                             {!! Form::close() !!}

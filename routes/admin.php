@@ -257,7 +257,7 @@ Route::group(['middleware' => ['installer']], function () {
         Route::post('/deleteAddress', 'CustomersController@deleteAddress')->middleware('edit_customer');
     });
 
-    Route::group(['prefix' => 'admin/countries', 'middleware' => 'auth', 'namespace' => 'AdminControllers'], function () {
+    Route::group(['prefix' => 'admin/regions', 'middleware' => 'auth', 'namespace' => 'AdminControllers'], function () {
         Route::get('/filter', 'CountriesController@filter')->middleware('view_tax');
         Route::get('/display', 'CountriesController@index')->middleware('view_tax');
         Route::get('/add', 'CountriesController@add')->middleware('add_tax');

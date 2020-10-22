@@ -20,7 +20,7 @@
                     <div class="box">
                         <div class="box-header">
                             <div class="col-lg-6 form-inline" id="contact-form">
-                                <form  name='registration' id="registration" class="registration" method="get" action="{{url('admin/countries/filter')}}">
+                                <form  name='registration' id="registration" class="registration" method="get" action="{{url('admin/regions/filter')}}">
                                     <input type="hidden"  value="{{csrf_token()}}">
                                     <div class="input-group-form search-panel ">
                                         <select type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" name="FilterBy" id="FilterBy"  >
@@ -31,13 +31,13 @@
                                         </select>
                                         <input type="text" class="form-control input-group-form " name="parameter" placeholder="Search term..." id="parameter" @if(isset($param)) value="{{$param}}" @endif >
                                         <button class="btn btn-primary " id="submit" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                                        @if(isset($param,$name))  <a class="btn btn-danger " href="{{url('admin/countries/display')}}"><i class="fa fa-ban" aria-hidden="true"></i> </a>@endif
+                                        @if(isset($param,$name))  <a class="btn btn-danger " href="{{url('admin/regions/display')}}"><i class="fa fa-ban" aria-hidden="true"></i> </a>@endif
                                     </div>
                                 </form>
                                 <div class="col-lg-4 form-inline" id="contact-form12"></div>
                             </div>
                             <div class="box-tools pull-right">
-                                <a href="{{url('admin/countries/add')}}" type="button" class="btn btn-block btn-primary">{{ trans('labels.AddNew') }}</a>
+                                <a href="{{url('admin/regions/add')}}" type="button" class="btn btn-block btn-primary">{{ trans('labels.AddNew') }}</a>
                             </div>
                         </div>
 
@@ -61,7 +61,7 @@
                                         <thead>
                                         <tr>
                                             <th>@sortablelink('countries_id', trans('labels.ID') )</th>
-                                            <th>@sortablelink('countries_name', trans('labels.CountryName') )</th>
+                                            <th>@sortablelink('countries_name', trans('labels.RegionName') )</th>
                                             <th>@sortablelink('countries_iso_code_2', trans('labels.ISOCode2') )</th>
                                             <th>@sortablelink('countries_iso_code_3', trans('labels.ISOCode3') )</th>
                                             <th>{{ trans('labels.Action') }}</th>
@@ -76,7 +76,7 @@
                                                     <td>{{ $countries->countries_iso_code_2 }}</td>
                                                     <td>{{ $countries->countries_iso_code_3 }}</td>
                                                     @php $id =$countries->countries_id;   @endphp
-                                                    <td><a data-toggle="tooltip" data-placement="bottom" title="{{ trans('labels.Edit') }}" href="{{url('admin/countries/edit',$id)}}" class="badge bg-light-blue"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                    <td><a data-toggle="tooltip" data-placement="bottom" title="{{ trans('labels.Edit') }}" href="{{url('admin/regions/edit',$id)}}" class="badge bg-light-blue"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a  data-toggle="tooltip" data-placement="bottom" title=" {{ trans('labels.Delete') }}" id="deleteCountryId" countries_id ="{{ $countries->countries_id }}" class="badge bg-red"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                                     </td>
                                                 </tr>
@@ -109,17 +109,17 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="deleteCountryModalLabel">{{ trans('labels.DeleteCountry') }}</h4>
+                            <h4 class="modal-title" id="deleteCountryModalLabel">{{ trans('labels.DeleteRegion') }}</h4>
                         </div>
-                        {!! Form::open(array('url' =>'admin/countries/delete', 'name'=>'deleteCountry', 'id'=>'deleteCountry', 'method'=>'post', 'class' => 'form-horizontal', 'enctype'=>'multipart/form-data')) !!}
+                        {!! Form::open(array('url' =>'admin/regions/delete', 'name'=>'deleteCountry', 'id'=>'deleteCountry', 'method'=>'post', 'class' => 'form-horizontal', 'enctype'=>'multipart/form-data')) !!}
                         {!! Form::hidden('action',  'delete', array('class'=>'form-control')) !!}
                         {!! Form::hidden('id',  '', array('class'=>'form-control', 'id'=>'countries_id')) !!}
                         <div class="modal-body">
-                            <p>{{ trans('labels.DeleteCountryText') }}</p>
+                            <p>{{ trans('labels.DeleteRegionText') }}</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('labels.Close') }}</button>
-                            <button type="submit" class="btn btn-primary" id="deleteCountry">{{ trans('labels.DeleteCountry') }}</button>
+                            <button type="submit" class="btn btn-primary" id="deleteCountry">{{ trans('labels.DeleteRegion') }}</button>
                         </div>
                         {!! Form::close() !!}
                     </div>

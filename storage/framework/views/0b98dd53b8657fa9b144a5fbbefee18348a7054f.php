@@ -2,11 +2,11 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1> <?php echo e(trans('labels.EditRegion')); ?> <small><?php echo e(trans('labels.EditRegion')); ?>...</small> </h1>
+            <h1> <?php echo e(trans('labels.AddRegion')); ?> <small><?php echo e(trans('labels.AddRegion')); ?>...</small> </h1>
             <ol class="breadcrumb">
                 <li><a href="<?php echo e(URL::to('admin/dashboard/this_month')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('labels.breadcrumb_dashboard')); ?></a></li>
-                <li><a href="<?php echo e(URL::to('admin/regions/display')); ?>"><i class="fa fa-money"></i><?php echo e(trans('labels.ListingRegions')); ?></a></li>
-                <li class="active"><?php echo e(trans('labels.EditRegion')); ?></li>
+                <li><a href="<?php echo e(URL::to('admin/regions/display')); ?>"><i class="fa fa-money"></i><?php echo e(trans('labels.ListingRegions')); ?> </a></li>
+                <li class="active"><?php echo e(trans('labels.AddRegion')); ?> </li>
             </ol>
         </section>
 
@@ -21,7 +21,7 @@
 
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title"><?php echo e(trans('labels.EditRegion')); ?></h3>
+                            <h3 class="box-title"><?php echo e(trans('labels.AddRegion')); ?></h3>
                         </div>
 
                         <!-- /.box-header -->
@@ -30,26 +30,25 @@
                                 <div class="col-xs-12">
                                     <div class="box box-info"><br>
 
-                                      <?php if(session()->has('message')): ?>
-                                          <div class="alert alert-success alert-dismissible" role="alert">
-                                              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                              <?php echo e(session()->get('message')); ?>
+                                        <?php if(session()->has('message')): ?>
+                                            <div class="alert alert-success alert-dismissible" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <?php echo e(session()->get('message')); ?>
 
-                                          </div>
-                                      <?php endif; ?>
+                                            </div>
+                                        <?php endif; ?>
 
                                         <!-- /.box-header -->
                                         <!-- form start -->
                                         <div class="box-body">
-
-                                            <?php echo Form::open(array('url' =>'admin/regions/update', 'method'=>'post', 'class' => 'form-horizontal field-validat', 'enctype'=>'multipart/form-data')); ?>
-
-                                            <?php echo Form::hidden('id',  $country->countries_id , array('class'=>'form-control', 'id'=>'id')); ?>
+                                            <?php echo Form::open(array('url' =>'admin/regions/add', 'method'=>'post', 'class' => 'form-horizontal  form-validate', 'enctype'=>'multipart/form-data')); ?>
 
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-2 col-md-3 control-label"><?php echo e(trans('labels.RegionName')); ?></label>
+                                                <label for="name" class="col-sm-2 col-md-3 control-label"><?php echo e(trans('labels.RegionName')); ?>
+
+                                                </label>
                                                 <div class="col-sm-10 col-md-4">
-                                                    <?php echo Form::text('countries_name', $country->countries_name, array('class'=>'form-control field-validat', 'id'=>'countries_name')); ?>
+                                                    <?php echo Form::text('countries_name',  '', array('class'=>'form-control  field-validate', 'id'=>'countries_name')); ?>
 
                                                     <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
                                                       <?php echo e(trans('labels.RegionNameText')); ?></span>
@@ -62,9 +61,10 @@
 
                                                 </label>
                                                 <div class="col-sm-10 col-md-4">
-                                                    <?php echo Form::text('countries_iso_code_2', $country->countries_iso_code_2, array('class'=>'form-control field-validat', 'id'=>'countries_iso_code_2')); ?>
+                                                    <?php echo Form::text('countries_iso_code_2',  '', array('class'=>'form-control field-validate', 'id'=>'countries_iso_code_2')); ?>
 
-                                                    <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;"><?php echo e(trans('labels.ISOCode2Text')); ?></span>
+                                                    <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
+                               	                       <?php echo e(trans('labels.ISOCode2Text')); ?></span>
                                                     <span class="help-block hidden"><?php echo e(trans('labels.textRequiredFieldMessage')); ?></span>
                                                 </div>
                                             </div>
@@ -74,9 +74,10 @@
 
                                                 </label>
                                                 <div class="col-sm-10 col-md-4">
-                                                    <?php echo Form::text('countries_iso_code_3', $country->countries_iso_code_3, array('class'=>'form-control field-validat', 'id'=>'countries_iso_code_3')); ?>
+                                                    <?php echo Form::text('countries_iso_code_3',  '', array('class'=>'form-control field-validate', 'id'=>'countries_iso_code_3')); ?>
 
-                                                    <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;"><?php echo e(trans('labels.ISOCode3Text')); ?></span>
+                                                    <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
+                                                      <?php echo e(trans('labels.ISOCode3Text')); ?></span>
                                                     <span class="help-block hidden"><?php echo e(trans('labels.textRequiredFieldMessage')); ?></span>
                                                 </div>
                                             </div>
@@ -113,4 +114,4 @@
     </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Freelancer\LAravel Ionic Fish\LaravelWebsite&AdminCode\website_adminpanel\resources\views/admin/countries/edit.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Freelancer\LAravel Ionic Fish\LaravelWebsite&AdminCode\website_adminpanel\resources\views/admin/countries/add.blade.php ENDPATH**/ ?>
