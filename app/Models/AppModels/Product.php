@@ -136,6 +136,7 @@ class Product extends Model
         $minPrice = 0;
         $maxPrice = 0;
         $consumer_data = array();
+        $zone_id = $request->zoneId;
         $consumer_data['consumer_key'] = request()->header('consumer-key');
         $consumer_data['consumer_secret'] = request()->header('consumer-secret');
         $consumer_data['consumer_nonce'] = request()->header('consumer-nonce');
@@ -284,7 +285,11 @@ class Product extends Model
                                         ->leftjoin('categories_description', 'categories_description.categories_id', 'products_to_categories.categories_id')
                                         ->select('categories.categories_id', 'categories_description.categories_name', 'categories.categories_image', 'categories.categories_icon', 'categories.parent_id')
                                         ->where('products_id', '=', $products_id)
+                                        if ($zone_id != null && $zone_id != ''){
+                                            ->where('zone_id', '=', $zone_id)->get();
+                                        }
                                         ->where('categories_description.language_id', '=', $language_id)->get();
+                                        
                                     }
                                     else {
                                         $categories = DB::table('products_to_categories')
@@ -292,6 +297,9 @@ class Product extends Model
                                         ->leftjoin('categories_description', 'categories_description.categories_id', 'products_to_categories.categories_id')
                                         ->select('categories.categories_id', 'categories_description.categories_name', 'categories.categories_image1', 'categories.categories_icon1', 'categories.parent_id')
                                         ->where('products_id', '=', $products_id)
+                                        if ($zone_id != null && $zone_id != ''){
+                                            ->where('zone_id', '=', $zone_id)->get();
+                                        }
                                         ->where('categories_description.language_id', '=', $language_id)->get();
                                     }
                                     
@@ -480,8 +488,11 @@ class Product extends Model
                 $categories = DB::table('products')
                     ->leftJoin('manufacturers', 'manufacturers.manufacturers_id', '=', 'products.manufacturers_id')
                     ->leftJoin('manufacturers_info', 'manufacturers.manufacturers_id', '=', 'manufacturers_info.manufacturers_id')
+                    if ($zone_id != null && $zone_id != ''){
+                        ->where('products.zone_id', '=', $zone_id)->get();
+                    }
                     ->leftJoin('products_description', 'products_description.products_id', '=', 'products.products_id');
-
+                    
                 $categories->LeftJoin('image_categories', function ($join) {
                     $join->on('image_categories.image_id', '=', 'products.products_image')
                         ->where(function ($query) {
@@ -1945,6 +1956,7 @@ class Product extends Model
         $inventory_ref_id = '';
         $result = array();
         $products_id = $request['products_id'];
+        
         $productsType = DB::table('products')->where('products_id', $products_id)->get();
         //check products type
         if ($productsType[0]->products_type == 1) {
