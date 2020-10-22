@@ -561,8 +561,9 @@ class Product extends Model
                     $categories->where('products.products_liked', '>', 0);
                 }
 
-                    $categories->where('products.products_liked', '=', $zone_id);
-                
+                if ($zone_id != null && $zone_id != ''){
+                    $categories->where('products.zone_id', '=', $zone_id);
+                }
                 //wishlist customer id
                 if ($type == "wishlist") {
                     $categories->where('liked_customers_id', '=', $request->customers_id);
