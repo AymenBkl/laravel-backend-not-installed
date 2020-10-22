@@ -43,7 +43,7 @@
 
                                             {!! Form::open(array('url' =>'admin/zones/add', 'method'=>'post', 'class' => 'form-horizontal form-validate', 'enctype'=>'multipart/form-data')) !!}
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Country') }}
+                                                <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Region') }}
                                                 </label>
                                                 <div class="col-sm-10 col-md-4">
                                                     <select name="zone_country_id" class='form-control'>
@@ -52,7 +52,7 @@
                                                         @endforeach
                                                     </select>
                                                     <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
-                                                      {{ trans('labels.ChooseZoneCountry') }}</span>
+                                                      {{ trans('labels.ChooseZoneRegion') }}</span>
                                                     <span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
                                                 </div>
                                             </div>

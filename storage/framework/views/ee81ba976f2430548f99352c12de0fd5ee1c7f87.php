@@ -44,7 +44,7 @@
                                             <?php echo Form::open(array('url' =>'admin/zones/add', 'method'=>'post', 'class' => 'form-horizontal form-validate', 'enctype'=>'multipart/form-data')); ?>
 
                                             <div class="form-group">
-                                                <label for="name" class="col-sm-2 col-md-3 control-label"><?php echo e(trans('labels.Country')); ?>
+                                                <label for="name" class="col-sm-2 col-md-3 control-label"><?php echo e(trans('labels.Region')); ?>
 
                                                 </label>
                                                 <div class="col-sm-10 col-md-4">
@@ -54,7 +54,7 @@
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
                                                     <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
-                                                      <?php echo e(trans('labels.ChooseZoneCountry')); ?></span>
+                                                      <?php echo e(trans('labels.ChooseZoneRegion')); ?></span>
                                                     <span class="help-block hidden"><?php echo e(trans('labels.textRequiredFieldMessage')); ?></span>
                                                 </div>
                                             </div>

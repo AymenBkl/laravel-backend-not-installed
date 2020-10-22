@@ -469,6 +469,43 @@
 
                                         <hr>
                                         <div class="row">
+                                        <div class="col-xs-12 col-md-6">
+                                                <div class="form-group flash-sale-link">
+                                                <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Region') }}</label>
+
+                                            <div class="col-sm-10 col-md-4">
+
+
+                                                    <select name="zone_country_id" class='form-control'>
+                                                        @foreach( $result['countries'] as $countries_data)
+                                                            <option value="{{ $countries_data->countries_id }}"> {{ $countries_data->countries_name }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
+                                                      {{ trans('labels.ChooseZoneRegion') }}</span>
+                                                    <span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
+                                                </div>
+                                                </div>
+                                                </div>
+
+                                                <div class="col-xs-12 col-md-6">
+                                                <div class="form-group">
+                                                <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.ZoneName') }}</label>
+
+                                            <div class="col-sm-10 col-md-4">
+
+
+                                                    <select name="zone_country_id" class='form-control' id="zone_country_id">
+                                                        @foreach( $result['zones'] as $zones_data)
+                                                            <option value="{{ $zones_data->zone_id }}" {{($zones_data->zone_id == $result['product'][0]->zone_id) ? 'selected' : '' }}> {{ $zones_data->zone_name}} </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
+                                                      {{ trans('labels.ChooseZoneRegion') }}</span>
+                                                    <span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
+                                                </div>
+                                                </div>
+                                                </div>
                                             <div class="col-xs-12">
                                                 <div class="tabbable tabs-left">
                                                     <ul class="nav nav-tabs">

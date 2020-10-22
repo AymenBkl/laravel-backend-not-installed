@@ -15,13 +15,17 @@ use App\Models\Core\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
+use App\Models\Core\Countries;
+use App\Models\Core\Zones;
+
+
 
 use Validator;
 class ProductController extends Controller
 {
 
     public function __construct(Products $products, Languages $language, Images $images, Categories $category, Setting $setting,
-        Manufacturers $manufacturer, Reviews $reviews) {
+        Manufacturers $manufacturer, Reviews $reviews,Countries $countries,Zones $zones) {
         $this->category = $category;
         $this->reviews = $reviews;
         $this->language = $language;
@@ -31,6 +35,9 @@ class ProductController extends Controller
         $this->myVarsetting = new SiteSettingController($setting);
         $this->myVaralter = new AlertController($setting);
         $this->Setting = $setting;
+        $this->Countries = $countries;
+        $this->Zones = $zones;
+        
 
     }
 
@@ -98,11 +105,15 @@ class ProductController extends Controller
     public function add(Request $request)
     {
         $title = array('pageTitle' => Lang::get("labels.AddProduct"));
+        
         $language_id = '1';
         $allimage = $this->images->getimages();
         $result = array();
         $categories = $this->category->recursivecategories($request);
-
+        $countries = $this->Countries->getter();
+        $zones = $this->Zones->paginator();
+        $result['countries'] = $countries;
+        $result['zones'] = $zones;
         $parent_id = array();
         $option = '<ul class="list-group list-group-root well">';
 
@@ -172,7 +183,10 @@ class ProductController extends Controller
         $result = $this->products->edit($request);
         //dd($result['categories_array']);
         $categories = $this->category->recursivecategories($request);
-
+        $countries = $this->Countries->getter();
+        $zones = $this->Zones->paginator();
+        $result['countries'] = $countries;
+        $result['zones'] = $zones;
         $parent_id = $result['categories_array'];
         $option = '<ul class="list-group list-group-root well">';
 
@@ -232,7 +246,10 @@ class ProductController extends Controller
 				),
 			array(
 					'categories'    => 'required',
-				)
+            ),
+            array(
+                    'zone_country_id' => $request->zone_country_id,
+            )
         );
         
 		//check categories

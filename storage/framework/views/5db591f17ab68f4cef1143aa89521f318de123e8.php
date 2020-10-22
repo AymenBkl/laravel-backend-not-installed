@@ -27,7 +27,7 @@
                                             <option value="" selected disabled hidden><?php echo e(trans('labels.Filter By')); ?></option>
                                             <option value="Zone"  <?php if(isset($name)): ?> <?php if($name == "Zone"): ?> <?php echo e('selected'); ?> <?php endif; ?> <?php endif; ?>><?php echo e(trans('labels.Zone')); ?></option>
                                             <option value="Code" <?php if(isset($name)): ?> <?php if($name == "Code"): ?> <?php echo e('selected'); ?><?php endif; ?> <?php endif; ?>><?php echo e(trans('labels.Code')); ?></option>
-                                            <option value="Country" <?php if(isset($name)): ?> <?php if($name == "Country"): ?> <?php echo e('selected'); ?><?php endif; ?> <?php endif; ?>><?php echo e(trans('labels.Country')); ?></option>
+                                            <option value="Country" <?php if(isset($name)): ?> <?php if($name == "Country"): ?> <?php echo e('selected'); ?><?php endif; ?> <?php endif; ?>><?php echo e(trans('labels.Region')); ?></option>
                                         </select>
                                         <input type="text" class="form-control input-group-form " name="parameter" placeholder="Search term..." id="parameter" <?php if(isset($param)): ?> value="<?php echo e($param); ?>" <?php endif; ?> >
                                         <button class="btn btn-primary " id="submit" type="submit"><span class="glyphicon glyphicon-search"></span></button>
@@ -64,7 +64,7 @@
                                             <th><?php echo \Kyslik\ColumnSortable\SortableLink::render(array ('zone_id', trans('labels.ID')));?></th>
                                             <th><?php echo \Kyslik\ColumnSortable\SortableLink::render(array ('zone_name', trans('labels.Zone')));?></th>
                                             <th><?php echo \Kyslik\ColumnSortable\SortableLink::render(array ('zone_code', trans('labels.Code')));?></th>
-                                            <th><?php echo \Kyslik\ColumnSortable\SortableLink::render(array ('countries_name', trans('labels.Country')));?></th>
+                                            <th><?php echo \Kyslik\ColumnSortable\SortableLink::render(array ('countries_name', trans('labels.Region')));?></th>
                                             <th><?php echo e(trans('labels.Action')); ?></th>
                                         </tr>
                                         </thead>

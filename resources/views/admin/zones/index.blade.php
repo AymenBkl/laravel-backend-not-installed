@@ -28,7 +28,7 @@
                                             <option value="" selected disabled hidden>{{trans('labels.Filter By')}}</option>
                                             <option value="Zone"  @if(isset($name)) @if  ($name == "Zone") {{ 'selected' }} @endif @endif>{{trans('labels.Zone')}}</option>
                                             <option value="Code" @if(isset($name)) @if  ($name == "Code") {{ 'selected' }}@endif @endif>{{trans('labels.Code')}}</option>
-                                            <option value="Country" @if(isset($name)) @if  ($name == "Country") {{ 'selected' }}@endif @endif>{{trans('labels.Country')}}</option>
+                                            <option value="Country" @if(isset($name)) @if  ($name == "Country") {{ 'selected' }}@endif @endif>{{trans('labels.Region')}}</option>
                                         </select>
                                         <input type="text" class="form-control input-group-form " name="parameter" placeholder="Search term..." id="parameter" @if(isset($param)) value="{{$param}}" @endif >
                                         <button class="btn btn-primary " id="submit" type="submit"><span class="glyphicon glyphicon-search"></span></button>
@@ -64,7 +64,7 @@
                                             <th>@sortablelink('zone_id', trans('labels.ID') )</th>
                                             <th>@sortablelink('zone_name', trans('labels.Zone') )</th>
                                             <th>@sortablelink('zone_code', trans('labels.Code') )</th>
-                                            <th>@sortablelink('countries_name', trans('labels.Country') )</th>
+                                            <th>@sortablelink('countries_name', trans('labels.Region') )</th>
                                             <th>{{ trans('labels.Action') }}</th>
                                         </tr>
                                         </thead>

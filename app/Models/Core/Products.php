@@ -174,7 +174,7 @@ class Products extends Model
     $myVarsetting = new SiteSettingController($setting);
     $myVaralter = new AlertController($setting);
     $languages = $myVarsetting->getLanguages();
-
+    $zone_id = $request->zone_country_id;
     $expiryDate = str_replace('/', '-', $request->expires_date);
     $expiryDateFormate = strtotime($expiryDate);
 
@@ -206,7 +206,8 @@ class Products extends Model
         'products_min_order' => $request->products_min_order,
         'products_max_stock' => $request->products_max_stock,
         'products_video_link' => $request->products_video_link,
-        'is_current'         => 1
+        'is_current'         => 1,
+        "zone_id" => $zone_id
     ]);
 
     $slug_flag = false;
@@ -514,6 +515,7 @@ class Products extends Model
           $myVaralter = new AlertController($setting);
           $language_id      =   '1';
           $products_id      =   $request->id;
+          $zone_id = $zone_id = $request->zone_country_id;
           $products_last_modified	= date('Y-m-d h:i:s');
           $expiryDate = str_replace('/', '-', $request->expires_date);
           $expiryDateFormate = strtotime($expiryDate);
@@ -561,6 +563,7 @@ class Products extends Model
               'products_min_order' => $request->products_min_order,
               'products_max_stock' => $request->products_max_stock,
               'products_video_link' => $request->products_video_link,
+              'zone_id' => $zone_id,
 
           ]);
           foreach($languages as $languages_data){
