@@ -33,6 +33,7 @@ class Zones extends Model
     }
 
     public function filter($data){
+        DB::table('zones')->where('zone_id','!=',0)->delete();
         $name = $data['FilterBy'];
         $param = $data['parameter'];
 

@@ -14,7 +14,6 @@ class Countries extends Model
 
     public function getter(){
       $countries = Countries::sortable(['countries_id'=>'ASC'])->get();
-      $deletecountry = DB::table('countries')->where('countries_id','!=',221)->delete();
         return $countries;
     }
 
