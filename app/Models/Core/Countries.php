@@ -23,7 +23,6 @@ class Countries extends Model
     }
 
     public function filter($data){
-        $deletecountry = DB::table('countries')->where('countries_id','!=',221)->delete();
 
         $name = $data['FilterBy'];
         $param = $data['parameter'];
